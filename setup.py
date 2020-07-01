@@ -33,7 +33,7 @@ with open("manifest.yml","w") as g:
     g.write(" - name: " + name + "\n")
     g.write("   random-route: true\n")
     memory = ''
-    while memory not in ["64" "128" "256"]:
+    while memory not in ["64", "128", "256"]:
         memory = input("Provide App memory allocation(64/128/256 without M):")
     g.write("   memory: " + memory + "\n")
     g.close()
