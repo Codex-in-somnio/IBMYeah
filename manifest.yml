@@ -1,0 +1,5 @@
+---
+applications:
+ - name: IBMYeah
+   random-route: true
+   memory: 128M
