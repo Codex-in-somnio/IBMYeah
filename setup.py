@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 from string import ascii_letters, digits
 from secrets import choice
 from hublatest.hublatest import download_repo_release
@@ -11,7 +11,7 @@ download_repo_release("shadowsocks", "go-shadowsocks2",
 download_repo_release("shadowsocks", "v2ray-plugin",
                       download_dir="bin", regex_filter="linux-amd64",
                       post_download="tar -zxf {filepath} -C {filedir};rm {filepath}")
-                      
+
 # Generating env file
 with open("env", "w") as f:
     password = input("Provide password or default to random:\n")
@@ -25,7 +25,7 @@ with open("env", "w") as f:
     f.write("CIPHER=" + cipher + "\n")
     f.close()
 
-with open("manifest.yml,w") as g:
+with open("manifest.yml","w") as g:
     g.write("applications:\n")
     name = ''
     while name is '':
