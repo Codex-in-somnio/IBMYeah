@@ -35,5 +35,5 @@ with open("manifest.yml","w") as g:
     memory = ''
     while memory not in ["64", "128", "256"]:
         memory = input("Provide App memory allocation(64/128/256 without M):")
-    g.write("   memory: " + memory + "\n")
+    g.write("   memory: " + memory + "M\n")
     g.close()
