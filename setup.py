@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 from string import ascii_letters, digits
 from hublatest.hublatest import download_repo_release
 try:
@@ -7,7 +7,6 @@ except ImportError:
     from random import choice
 
 
-# Fetching binaries from GitHub release (Powered by HubLatest)
 print("Fetching go-shadowsocks2 release...")
 download_repo_release("shadowsocks", "go-shadowsocks2",
                       download_dir="bin", regex_filter="linux",
@@ -17,7 +16,6 @@ download_repo_release("shadowsocks", "v2ray-plugin",
                       download_dir="bin", regex_filter="linux-amd64",
                       post_download="tar -zxf {filepath} -C {filedir};rm {filepath}")
 
-# Generating env file
 print("Generating configs...")
 with open("env", "w") as f:
     password = input("Provide password [default=random]: ")
@@ -28,7 +26,7 @@ with open("env", "w") as f:
     if cipher is '':
         cipher = "AEAD_CHACHA20_POLY1305"
     env = ("PASSWD={password}\n"
-           "CIPHER={cipher}")
+           "CIPHER={cipher}\n")
     f.write(env.format(password=password, cipher=cipher))
     f.close()
 
