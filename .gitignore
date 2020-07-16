@@ -63,5 +63,5 @@ target/
 *.DS_Store
 
 # Project
-env
 manifest.yml
+config.json

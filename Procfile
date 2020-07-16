@@ -1,1 +1,1 @@
-web: ./start.sh
+web: bin/ssserver -c config.json
