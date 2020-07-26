@@ -12,8 +12,8 @@ print("Fetching shadowsocks-rust release...")
 download_repo_release("shadowsocks", "shadowsocks-rust",
                       download_dir="bin", regex_filter="x86_64-unknown-linux-gnu.tar.xz$",
                       post_download="tar -Jxvf {filepath} -C {filedir};rm {filepath}")
-print("Fetching v2ray-plugin release...")
-download_repo_release("shadowsocks", "v2ray-plugin",
+print("Fetching teddysun/v2ray-plugin release...")
+download_repo_release("teddysun", "v2ray-plugin",
                       download_dir="bin", regex_filter="linux-amd64",
                       post_download="tar -zxf {filepath} -C {filedir};rm {filepath}")
 
@@ -37,7 +37,7 @@ with open("config.json", "w") as f:
     dump(conf, f)
     f.close()
 
-with open("manifest.yml", "w") as g:
+with open('manifest.yml', 'w') as g:
     name = ''
     while name == '':
         name = input("Provide App name [Required]: ")
@@ -45,10 +45,18 @@ with open("manifest.yml", "w") as g:
     while memory not in ["64", "128", "256"]:
         memory = input("Provide App memory allocation [64(default)/128/256 without M]: ")
         if memory == '':
-            memory = "64"
+            memory = '64'
+    route=''
+    while route == '':
+        route = input("Provide desired route to app [default 'APPNAME.us-east.cf.appdomain.cloud']")
+        if route == '':
+            route = name + '.us-east.cf.appdomain.cloud'
     manifest = ("applications:\n"
                 " - name: {name}\n"
+                "   memory: {memory}M\n"
                 "   random-route: true\n"
-                "   memory: {memory}M\n")
-    g.write(manifest.format(name=name, memory=memory))
+                "   routes:\n"
+                "    - route: {route}\n"
+                )
+    g.write(manifest.format(name=name, memory=memory,route=route))
     g.close()
