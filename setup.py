@@ -48,9 +48,9 @@ with open('manifest.yml', 'w') as g:
             memory = '64'
     route=''
     while route == '':
-        route = input("Provide desired route to app [default 'APPNAME.us-east.cf.appdomain.cloud']")
+        route = input("Provide desired route to app [default 'APPNAME.us-south.cf.appdomain.cloud']: ")
         if route == '':
-            route = name + '.us-east.cf.appdomain.cloud'
+            route = name + '.us-south.cf.appdomain.cloud'
     manifest = ("applications:\n"
                 " - name: {name}\n"
                 "   memory: {memory}M\n"
