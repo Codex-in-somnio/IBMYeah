@@ -1,1 +1,1 @@
-web: bin/ssserver -c config.json
+web:	bin/ssserver -c config.json
